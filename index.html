@@ -174,6 +174,10 @@
     .center-cta { text-align: center; margin-top: 40px; }
 
     /* Problemas */
+    .intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: clamp(28px, 5vw, 72px); align-items: center; }
+    .intro-grid .section-head h2 + .lead { margin-top: 16px; max-width: 540px; }
+    .intro-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); box-shadow: 0 24px 48px -28px rgba(38, 0, 15, .4); }
+    @media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; gap: 28px; } .intro-photo { width: min(100%, 520px); } }
     .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 40px; }
     .card { background: #fff; border: 1px solid var(--cream-200); border-radius: var(--radius); padding: 26px 24px 24px; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease); }
     .card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -24px rgba(38, 0, 15, .3); border-color: var(--gold); }
@@ -320,13 +324,10 @@
           </div>
         </div>
         <div class="hero-media arch reveal">
-          <img src="https://images.unsplash.com/photo-1602556579090-4e1a55e99b4a?auto=format&fit=crop&crop=faces&w=660&h=825&q=75"
-               srcset="https://images.unsplash.com/photo-1602556579090-4e1a55e99b4a?auto=format&fit=crop&crop=faces&w=440&h=550&q=75 440w,
-                       https://images.unsplash.com/photo-1602556579090-4e1a55e99b4a?auto=format&fit=crop&crop=faces&w=660&h=825&q=75 660w,
-                       https://images.unsplash.com/photo-1602556579090-4e1a55e99b4a?auto=format&fit=crop&crop=faces&w=880&h=1100&q=75 880w"
+          <img src="img/kimbely-brasil.webp" srcset="img/kimbely-brasil-480.webp 480w, img/kimbely-brasil.webp 800w"
                sizes="(max-width: 960px) min(100vw - 40px, 420px), 440px"
-               width="660" height="825" fetchpriority="high" decoding="async"
-               alt="Mãe sentada no sofá com a filha no colo, em um momento de conversa em casa">
+               width="800" height="1000" fetchpriority="high" decoding="async"
+               alt="Kimbely Brasil, advogada de Direito de Família">
         </div>
       </div>
     </section>
@@ -334,9 +335,21 @@
     <!-- Problemas -->
     <section class="section bg-alt" id="como-podemos-ajudar">
       <div class="container">
-        <div class="section-head reveal">
-          <p class="label">Isso está acontecendo com você?</p>
-          <h2>Existem situações familiares que não devem permanecer sem orientação.</h2>
+        <div class="intro-grid">
+          <div class="section-head reveal">
+            <p class="label">Isso está acontecendo com você?</p>
+            <h2>Existem situações familiares que não devem permanecer sem orientação.</h2>
+            <p class="lead">Guarda, pensão, divórcio, união estável ou uma situação de risco em casa: cada uma delas tem efeitos jurídicos que merecem ser compreendidos antes de qualquer decisão.</p>
+          </div>
+          <div class="intro-photo reveal">
+            <img src="https://images.unsplash.com/photo-1602556579090-4e1a55e99b4a?auto=format&fit=crop&crop=faces&w=720&h=540&q=75"
+                 srcset="https://images.unsplash.com/photo-1602556579090-4e1a55e99b4a?auto=format&fit=crop&crop=faces&w=480&h=360&q=75 480w,
+                         https://images.unsplash.com/photo-1602556579090-4e1a55e99b4a?auto=format&fit=crop&crop=faces&w=720&h=540&q=75 720w,
+                         https://images.unsplash.com/photo-1602556579090-4e1a55e99b4a?auto=format&fit=crop&crop=faces&w=960&h=720&q=75 960w"
+                 sizes="(max-width: 900px) min(100vw - 40px, 520px), 440px"
+                 width="720" height="540" loading="lazy" decoding="async"
+                 alt="Mãe sentada no sofá com a filha no colo, em um momento de conversa em casa">
+          </div>
         </div>
 
         <div class="cards">
@@ -415,7 +428,7 @@
     <section class="section bg-alt" id="sobre">
       <div class="container about-grid">
         <div class="about-media arch reveal">
-          <img src="img/kimbely-brasil.webp" srcset="img/kimbely-brasil-480.webp 480w, img/kimbely-brasil.webp 800w" sizes="260px" width="800" height="1000" loading="lazy" decoding="async" alt="Kimbely Brasil, advogada de Direito de Família">
+          <img src="img/kimbely-brasil-bw.webp" srcset="img/kimbely-brasil-bw-480.webp 480w, img/kimbely-brasil-bw.webp 800w" sizes="260px" width="800" height="1000" loading="lazy" decoding="async" alt="Kimbely Brasil analisando documentos em um tablet">
         </div>
         <div class="about-copy reveal">
           <p class="label">Quem irá analisar o seu caso</p>
