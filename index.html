@@ -33,6 +33,7 @@
     "email": "kimbely.brasil@gmail.com",
     "identifier": "OAB/DF 70.276",
     "telephone": "+5561982655804",
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "10"},
     "areaServed": "Brasília, DF",
     "sameAs": ["https://share.google/hyK290F2tsWx6TtAo"],
     "knowsAbout": ["Direito de Família", "Guarda de filhos", "Pensão alimentícia", "Divórcio", "Medida Protetiva de Urgência", "Alimentos avoengos", "União estável"]
@@ -190,28 +191,37 @@
     @media (max-width: 1024px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 640px) { .cards { grid-template-columns: 1fr; gap: 12px; margin-top: 30px; } .card { padding: 22px 20px; } }
 
-    /* Como funciona */
-    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 4vw, 48px); margin-top: 40px; }
-    .step { border-top: 1px solid var(--line); padding-top: 20px; }
-    .step-num { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--gold); margin-bottom: 10px; }
-    .step h3 { margin-bottom: 8px; }
-    .step p { color: var(--muted); font-size: .92rem; }
-    @media (max-width: 760px) { .steps { grid-template-columns: 1fr; gap: 24px; margin-top: 30px; } }
+    /* Avaliações – carrossel */
+    .rev-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 32px; }
+    .rev-score { display: flex; align-items: center; gap: 14px; }
+    .rev-score b { font-family: var(--serif); font-size: 2.6rem; font-weight: 600; color: var(--wine-900); line-height: 1; }
+    .rev-score .stars svg { width: 18px; height: 18px; }
+    .rev-score small { display: block; font-size: .86rem; color: var(--muted); margin-top: 4px; }
+    .rev-score a { color: var(--wine-700); font-weight: 500; border-bottom: 1px solid rgba(106, 23, 56, .35); }
+    .rev-score a:hover { border-bottom-color: var(--wine-700); }
+    .carousel { position: relative; margin-top: 32px; }
+    .track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 4px 12px; margin: -4px -4px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .track::-webkit-scrollbar { display: none; }
+    .rev { flex: 0 0 min(100%, 340px); scroll-snap-align: start; background: #fff; border: 1px solid var(--cream-200); border-radius: var(--radius); padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 12px; }
+    .rev .stars svg { width: 15px; height: 15px; }
+    .rev p { font-size: .95rem; line-height: 1.6; color: var(--ink); flex: 1; }
+    .rev footer { font-size: .84rem; color: var(--muted); border-top: 1px solid var(--cream-200); padding-top: 12px; }
+    .rev footer { display: flex; align-items: center; gap: 12px; }
+    .rev footer strong { display: block; color: var(--ink); font-weight: 500; }
+    .avatar { flex: none; width: 44px; height: 44px; border-radius: 50%; overflow: hidden; background: var(--wine-700); color: #fff; display: grid; place-items: center; font-family: var(--serif); font-weight: 600; font-size: 1.1rem; position: relative; }
+    .avatar::before { content: attr(data-initial); position: absolute; }
+    .avatar img { position: relative; width: 100%; height: 100%; object-fit: cover; }
+    .car-nav { display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px; }
+    .car-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--wine-700); color: var(--wine-700); display: grid; place-items: center; transition: background-color .25s, color .25s; }
+    .car-btn:hover { background: var(--wine-700); color: #fff; }
+    .car-btn svg { width: 18px; height: 18px; }
+    @media (max-width: 600px) { .rev { flex-basis: 86%; } .rev-score b { font-size: 2.2rem; } }
 
     /* Sobre + Google */
-    .about-grid { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+    .about-grid { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
     .about-copy h2 { margin-bottom: 6px; }
     .about-role { font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; color: var(--wine-700); font-weight: 500; margin-bottom: 18px; }
     .about-copy > p { color: var(--muted); max-width: 560px; }
-    .gcard { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; margin-top: 26px; padding: 20px 22px; background: #fff; border: 1px solid var(--cream-200); border-radius: var(--radius); max-width: 560px; }
-    .gcard-score { display: flex; align-items: center; gap: 12px; }
-    .gcard-score b { font-family: var(--serif); font-size: 2.2rem; font-weight: 600; color: var(--wine-900); line-height: 1; }
-    .gcard-score .stars svg { width: 17px; height: 17px; }
-    .gcard-info { flex: 1 1 200px; font-size: .9rem; color: var(--muted); line-height: 1.5; }
-    .gcard-info strong { display: block; color: var(--ink); font-weight: 500; }
-    .gcard-links { display: flex; flex-wrap: wrap; gap: 8px 18px; width: 100%; font-size: .88rem; font-weight: 500; color: var(--wine-700); }
-    .gcard-links a { border-bottom: 1px solid rgba(106, 23, 56, .35); padding-bottom: 1px; }
-    .gcard-links a:hover { border-bottom-color: var(--wine-700); }
     @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; gap: 34px; } .about-media { width: min(100%, 260px); } }
 
     /* FAQ */
@@ -286,8 +296,8 @@
       <nav class="nav" id="nav" aria-label="Navegação principal">
         <ul class="nav-links">
           <li><a href="#como-podemos-ajudar">Como podemos ajudar</a></li>
-          <li><a href="#como-funciona">Como funciona</a></li>
           <li><a href="#sobre">Advogada</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
           <li><a href="#duvidas">Dúvidas</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
@@ -392,39 +402,7 @@
       </div>
     </section>
 
-    <!-- Como funciona -->
-    <section class="section" id="como-funciona">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="label">Como funciona</p>
-          <h2>Orientação jurídica sem complicar ainda mais um momento difícil.</h2>
-        </div>
-
-        <ol class="steps">
-          <li class="step reveal">
-            <p class="step-num">01</p>
-            <h3>Você explica o que está acontecendo</h3>
-            <p>No primeiro contato, são levantadas as principais informações sobre a situação familiar e o que precisa ser resolvido.</p>
-          </li>
-          <li class="step reveal">
-            <p class="step-num">02</p>
-            <h3>O caso é analisado</h3>
-            <p>São avaliados documentos, contexto familiar e possíveis caminhos jurídicos aplicáveis ao caso.</p>
-          </li>
-          <li class="step reveal">
-            <p class="step-num">03</p>
-            <h3>Você entende os próximos passos</h3>
-            <p>As possibilidades são apresentadas de forma objetiva, com os procedimentos necessários para seguir.</p>
-          </li>
-        </ol>
-
-        <div class="center-cta reveal">
-          <a class="btn btn-wine" href="https://wa.me/5561982655804?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20atendimento%20em%20Direito%20de%20Fam%C3%ADlia." target="_blank" rel="noopener">Iniciar atendimento</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sobre + Google -->
+    <!-- Sobre -->
     <section class="section bg-alt" id="sobre">
       <div class="container about-grid">
         <div class="about-media arch reveal">
@@ -434,20 +412,93 @@
           <p class="label">Quem irá analisar o seu caso</p>
           <h2>Kimbely Brasil</h2>
           <p class="about-role">Advogada&nbsp;|&nbsp;Direito de Família&nbsp;|&nbsp;OAB/DF 70.276</p>
-          <p>Atuação direcionada a questões familiares, com atendimento individualizado e análise cuidadosa de cada situação. A proposta é apresentar informações jurídicas de maneira clara, para que cada pessoa compreenda as possibilidades existentes antes de tomar uma decisão.</p>
+          <p>Sou advogada há mais de 5 anos e especialista na área cível, com ampla experiência em Direito de Família.</p>
+          <p>Acredito que, por trás de cada questão jurídica, existe uma história, uma família e decisões importantes que precisam ser tomadas com segurança. Por isso, meu trabalho é oferecer orientação clara, acolhimento e uma atuação estratégica para proteger os direitos e interesses de cada cliente.</p>
+          <p>No Direito de Família, atuo na proteção dos seus direitos antes, durante e após o relacionamento, auxiliando em momentos que muitas vezes envolvem dúvidas, mudanças e decisões delicadas.</p>
+          <p>Mais do que buscar soluções jurídicas, meu compromisso é fazer com que você se sinta amparado, compreenda seus direitos e tenha segurança para tomar as melhores decisões.</p>
+        </div>
+      </div>
+    </section>
 
-          <div class="gcard">
-            <div class="gcard-score">
-              <b>5,0</b>
+    <!-- Avaliações -->
+    <section class="section" id="avaliacoes">
+      <div class="container">
+        <div class="rev-head reveal">
+          <div class="section-head">
+            <p class="label">Avaliações no Google</p>
+            <h2>O que dizem as pessoas atendidas</h2>
+          </div>
+          <div class="rev-score">
+            <b>5,0</b>
+            <div>
               <span class="stars" aria-label="Cinco estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+              <small>10 avaliações · <a href="https://share.google/hyK290F2tsWx6TtAo" target="_blank" rel="noopener">Ver todas no Google</a></small>
             </div>
-            <div class="gcard-info">
-              <strong>Kimbely Brasil Advogada em Brasília</strong>
-              10 avaliações no Google
-            </div>
-            <div class="gcard-links">
-              <a href="https://share.google/hyK290F2tsWx6TtAo" target="_blank" rel="noopener">Ver avaliações no Google</a>
-            </div>
+          </div>
+        </div>
+
+        <div class="carousel reveal">
+          <div class="track" id="revTrack" aria-label="Avaliações de clientes no Google" tabindex="0">
+          <article class="rev">
+            <span class="stars" aria-label="Cinco estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+            <p>“Excelente profissional! Uma advogada extremamente competente, dedicada e atenciosa. Sempre muito clara e cuidadosa em suas orientações, transmitindo segurança e confiança durante todo o atendimento. Recomendo de olhos fechados!”</p>
+            <footer>
+              <span class="avatar" data-initial="M"><img src="https://lh3.googleusercontent.com/a-/ALV-UjUkMY4SJil-4PIPYe8WYfUwbA8j-9kE0CgK2SOlL_Bwuz-Yc1AvRg=w96-h96-p-rp-mo-br100" width="44" height="44" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span><strong>Mariana Castro</strong>Avaliação no Google</span>
+            </footer>
+          </article>
+          <article class="rev">
+            <span class="stars" aria-label="Cinco estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+            <p>“A Dra. Kimbely é uma profissional excepcional! Desde o início do meu atendimento, demonstrou muito conhecimento, comprometimento e dedicação. Sempre foi atenciosa, paciente para esclarecer todas as minhas dúvidas e transparente em cada etapa…”</p>
+            <footer>
+              <span class="avatar" data-initial="M"><img src="https://lh3.googleusercontent.com/a-/ALV-UjUKBSMMMTSMX8AWo2FNKoKXU_vqRGP8nOecKrvZcm6LXGgmZes=w96-h96-p-rp-mo-br100" width="44" height="44" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span><strong>Maria Eduarda das Chagas Lopes</strong>Avaliação no Google</span>
+            </footer>
+          </article>
+          <article class="rev">
+            <span class="stars" aria-label="Cinco estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+            <p>“Uma excelente advogada. Muito educada, sempre nos atendeu com muita simpatia. Nota 1.000 pra Dra. Kimbely Brasil. Melhor advogada que já conheci.”</p>
+            <footer>
+              <span class="avatar" data-initial="M"><img src="https://lh3.googleusercontent.com/a-/ALV-UjU_Yf6TuWHN8apP4BAuafA9F-LJmWATpQ0IGLHJ_-kXMDymoywP=w96-h96-p-rp-mo-br100" width="44" height="44" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span><strong>Marcela Morais</strong>Avaliação no Google</span>
+            </footer>
+          </article>
+          <article class="rev">
+            <span class="stars" aria-label="Cinco estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+            <p>“Muito atenciosa e interessada em ajudar na causa do cliente. Obrigada, Dra., pelo suporte.”</p>
+            <footer>
+              <span class="avatar" data-initial="A"><img src="https://lh3.googleusercontent.com/a-/ALV-UjUV5x166o3D3hUsuMmUv4ETZIfCZ3kt2lFJ-d1rVDcRlZ7Uauvk=w96-h96-p-rp-mo-br100" width="44" height="44" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span><strong>Aline Gato</strong>Avaliação no Google</span>
+            </footer>
+          </article>
+          <article class="rev">
+            <span class="stars" aria-label="Cinco estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+            <p>“Excelente profissional, extremamente educada e me atende em tudo que preciso!”</p>
+            <footer>
+              <span class="avatar" data-initial="E"><img src="https://lh3.googleusercontent.com/a/ACg8ocJYOo7m4a-e9QEvZZQAFosQ2kYVbPzncSneyhlESk4nxlnERg=w96-h96-p-rp-mo-br100" width="44" height="44" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span><strong>Evelyn Maciel</strong>Avaliação no Google</span>
+            </footer>
+          </article>
+          <article class="rev">
+            <span class="stars" aria-label="Cinco estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+            <p>“Ótima advogada! Muito atenciosa com os casos.”</p>
+            <footer>
+              <span class="avatar" data-initial="F"><img src="https://lh3.googleusercontent.com/a-/ALV-UjWYJvraa1kzxSdM-_GCRvzzY5qKn2fpfICz6MgEofwXfHTOz60=w96-h96-p-rp-mo-br100" width="44" height="44" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span><strong>Fernanda Barbosa</strong>Avaliação no Google</span>
+            </footer>
+          </article>
+          <article class="rev">
+            <span class="stars" aria-label="Cinco estrelas"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+            <p>“Melhor das melhores!”</p>
+            <footer>
+              <span class="avatar" data-initial="M"><img src="https://lh3.googleusercontent.com/a-/ALV-UjXc4DXKpdsq-Th4GZIFDHx1uU9cnm9V_OUsopQD-_6RmhUKPJk=w96-h96-p-rp-mo-br100" width="44" height="44" loading="lazy" decoding="async" alt="" referrerpolicy="no-referrer" onerror="this.remove()"></span>
+              <span><strong>Michelle Sousa</strong>Avaliação no Google</span>
+            </footer>
+          </article>
+          </div>
+          <div class="car-nav">
+            <button class="car-btn" type="button" data-dir="-1" aria-label="Avaliações anteriores"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="car-btn" type="button" data-dir="1" aria-label="Próximas avaliações"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
           </div>
         </div>
       </div>
@@ -582,6 +633,17 @@
           if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
         });
       });
+
+      var track = document.getElementById('revTrack');
+      if (track) {
+        document.querySelectorAll('.car-btn').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var card = track.querySelector('.rev');
+            var step = card ? card.getBoundingClientRect().width + 16 : 340;
+            track.scrollBy({ left: step * Number(b.getAttribute('data-dir')), behavior: 'smooth' });
+          });
+        });
+      }
 
       var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
     })();
