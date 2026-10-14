@@ -659,5 +659,20 @@
       var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
+
+  <!-- Google Ads - conversao Contato no clique do WhatsApp (AW-18513673979) -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href*="wa.me"]');
+      if (link && typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18513673979/xsO8CIiB_pwdEPv9gPxE',
+          'value': 1.0,
+          'currency': 'BRL',
+          'transport_type': 'beacon'
+        });
+      }
+    });
+  </script>
 </body>
 </html>
